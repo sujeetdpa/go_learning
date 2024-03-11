@@ -22,14 +22,19 @@ func main() {
 	//Our own configuratino
 	router := gin.New()
 	router.Use(gin.Logger())
+
+	//Adding basic auth to admin
+	adminAuth := gin.BasicAuth(gin.Accounts{
+		"admin": "admin",
+	})
+
 	router.GET("/hello", handleHello)
 	router.POST("/post", handlePost)
 	router.GET("/query-param", handleQueryParam)
 	router.GET("/path-variable/name/:name/age/:age", handlePathVariable)
 
 	//Router Grouping
-
-	adminRouter := router.Group("/admin")
+	adminRouter := router.Group("/admin", adminAuth)
 	{
 		adminRouter.GET("/greet", controller.HandleAdminGreet)
 	}
