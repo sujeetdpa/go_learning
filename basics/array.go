@@ -22,4 +22,12 @@ func main() {
 	//Initialize only 1st and 2nd
 	arr4 := [5]int{1: 10, 2: 40}
 	fmt.Println(arr4)
+
+	var narr [4]int
+	narr[3] = 6
+	fmt.Println(narr)
+	test()
+}
+func test() {
+	fmt.Println("hello")
 }
