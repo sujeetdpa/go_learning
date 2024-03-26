@@ -57,7 +57,6 @@ func GetAllAppUser() ([]models.AppUser, error) {
 		fmt.Println("Error while fetching all app user: ", err.Error())
 		return nil, err
 	}
-	db.PostresDB.QueryRow()
 	var appUsers []models.AppUser
 	for rows.Next() {
 		appUser := models.AppUser{}
