@@ -30,6 +30,8 @@ func InsertIntoAppUser(appUser *models.AppUser) error {
 	} else {
 		fmt.Println("Successfully inserted data into user")
 	}
+	tx, err := db.PostresDB.Begin(context.TODO())
+	_, err = tx.Exec(context.TODO(), "abcdjhvahcj")
 	return nil
 	// Uisng name parametes
 	// query := "insert into app_user(name,username,password) values(@name,@username,@password)"
@@ -55,6 +57,7 @@ func GetAllAppUser() ([]models.AppUser, error) {
 		fmt.Println("Error while fetching all app user: ", err.Error())
 		return nil, err
 	}
+	db.PostresDB.QueryRow()
 	var appUsers []models.AppUser
 	for rows.Next() {
 		appUser := models.AppUser{}
