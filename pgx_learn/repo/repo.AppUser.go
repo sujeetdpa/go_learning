@@ -65,3 +65,7 @@ func GetAllAppUser() ([]models.AppUser, error) {
 	}
 	return appUsers, nil
 }
+
+func GenerateCreateTableQuery() {
+	//Not possible using goqu
+}
