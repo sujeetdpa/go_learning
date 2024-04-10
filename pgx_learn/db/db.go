@@ -17,6 +17,8 @@ var PostresDB *pgx.Conn
 
 var DbHandle *goqu.Database
 
+var GoquDb *goqu.Database
+
 func PostgresSQLDatabaseConnection() {
 	// url := "postgres://<username>:<password>@ep-soft-unit-66642743-pooler.us-east-1.aws.neon.tech/vicdb"
 	// url := "postgres://vicadmin:XR0xLKW2kgYe@ep-soft-unit-66642743-pooler.us-east-1.aws.neon.tech/vicdb"
@@ -47,4 +49,13 @@ func PostgresSQLDatabaseConnectionUsingPGX() {
 
 	DbHandle = goqu.New("pgx", db)
 
+}
+
+func PostgresSQLDatabaseConnectionUsingGoqu() {
+	db, err := sql.Open("postgres", "postgres://postgres:sujeet@localhost:5432/vicdb")
+	if err != nil {
+		log.Fatal(err)
+	}
+	goquDb := goqu.New("postgres", db)
+	goquDb = goquDb
 }
